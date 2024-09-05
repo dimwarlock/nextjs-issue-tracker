@@ -8,12 +8,10 @@ import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import createIssueSchema from '@/app/validationSchema';
 import {z} from 'zod'
-import ErrorMsg from '@/app/components/ErrorMsg';
-import Spinner from '@/app/components/Spinner';
-import delay from 'delay'
 import dynamic from 'next/dynamic';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import {ErrorMsg, Spinner} from '@/app/components/index'
 
 /*
 interface IssueForm {
