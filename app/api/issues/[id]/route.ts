@@ -1,5 +1,6 @@
 import createIssueSchema from "@/app/validationSchema";
 import prisma from "@/prisma/client";
+import delay from "delay";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest, {params}:{params:{id: string}}) {
@@ -35,6 +36,8 @@ export async function DELETE(request: NextRequest, {params}:{params: {id: string
 
     if (!issue)
         return NextResponse.json('Invalid Issue', {status:400})
+
+    await delay(2000)
 
     await prisma.issue.delete({where: {id: parseInt(params.id)}});
 
