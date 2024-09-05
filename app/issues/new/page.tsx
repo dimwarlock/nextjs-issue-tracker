@@ -11,6 +11,7 @@ import createIssueSchema from '@/app/validationSchema';
 import {z} from 'zod'
 import ErrorMsg from '@/app/components/ErrorMsg';
 import Spinner from '@/app/components/Spinner';
+import delay from 'delay'
 
 /*
 interface IssueForm {
@@ -39,6 +40,7 @@ const newIssuePage = () => {
     }
   })
 
+  delay(2000)
   return (
     <div className='max-w-xl ml-4 space-y-2'>
       {error && <Callout.Root color='red'> <Callout.Text>{error}</Callout.Text> </Callout.Root>}
