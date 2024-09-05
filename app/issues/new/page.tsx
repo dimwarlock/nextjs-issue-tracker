@@ -1,7 +1,6 @@
 'use client'
 import { Button, Callout, Text, TextField } from '@radix-ui/themes'
-import React, { useState } from 'react'
-import SimpleMDE from "react-simplemde-editor";
+import React, { useEffect, useState } from 'react'
 import "easymde/dist/easymde.min.css";
 import {useForm, Controller} from 'react-hook-form';
 import axios from 'axios';
@@ -12,6 +11,9 @@ import {z} from 'zod'
 import ErrorMsg from '@/app/components/ErrorMsg';
 import Spinner from '@/app/components/Spinner';
 import delay from 'delay'
+import dynamic from 'next/dynamic';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 /*
 interface IssueForm {
@@ -29,6 +31,7 @@ const newIssuePage = () => {
   });
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const onSubmit = handleSubmit(async (data)=> {
     try {
       setIsSubmitting(true)
@@ -39,8 +42,13 @@ const newIssuePage = () => {
       setError('Ha ocurrido un error inesperado.')
     }
   })
+ 
+  const SimpleMDE = dynamic(
+    ()=> import("react-simplemde-editor"),
+    {ssr: false,
+    loading: () => <Skeleton height="20rem" />}
+  )
 
-  delay(2000)
   return (
     <div className='max-w-xl ml-4 space-y-2'>
       {error && <Callout.Root color='red'> <Callout.Text>{error}</Callout.Text> </Callout.Root>}
