@@ -5,7 +5,7 @@ import React from 'react'
 const IssueActions = () => {
   return (
     <div>
-        <Button><Link href='/issues/new'>Nueva Issue</Link></Button>
+        <Button><Link href='/issues/new'>New Issue</Link></Button>
     </div>
   )
 }

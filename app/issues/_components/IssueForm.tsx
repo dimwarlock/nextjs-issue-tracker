@@ -8,11 +8,9 @@ import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import createIssueSchema from '@/app/validationSchema';
 import {z} from 'zod'
-import dynamic from 'next/dynamic';
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 import {ErrorMsg, Spinner} from '@/app/components/index'
 import { Issue } from '@prisma/client';
+import SimpleMDE from "react-simplemde-editor"
 
 /*
 interface IssueFormData {
@@ -20,11 +18,6 @@ interface IssueFormData {
   description: string;
 }
 */
-
-const SimpleMDE = dynamic(
-  ()=> import("react-simplemde-editor"),
-  {ssr: false, loading: () => <Skeleton height="20rem" />}
-)
 
 type IssueFormData = z.infer<typeof createIssueSchema>;
 
