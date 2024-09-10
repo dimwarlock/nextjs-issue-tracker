@@ -6,6 +6,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
+import toast, {Toaster} from 'react-hot-toast'
 
 interface Props {
   issue: Issue;
@@ -26,8 +27,9 @@ const AssigneeSelect = ({issue}: Props) => {
     return null;
 
   return (
+    <>
     <Select.Root onValueChange={(userId)=> {
-      axios.patch('/api/issues/' + issue.id, {assignedToUserId: userId || null});
+      axios.patch('/api/issues/' + issue.id, {assignedToUserId: userId || null}).catch(()=> {toast.error('Changes not saved')});
     }}>
         <Select.Trigger />
         <Select.Content>
@@ -44,6 +46,9 @@ const AssigneeSelect = ({issue}: Props) => {
             </Select.Group>
         </Select.Content>
     </Select.Root>
+
+    <Toaster />
+    </>
   )
 }
 
