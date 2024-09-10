@@ -27,7 +27,7 @@ const AuthStatus = ()=> {
   const {status, data: session} = useSession();
 
   if (status === 'loading')
-    return null;
+    return <h1 className='nav-link'>Login</h1>;
 
   if (status === 'unauthenticated')
     return <Link href='/api/auth/signin' className='nav-link'>Login</Link>
