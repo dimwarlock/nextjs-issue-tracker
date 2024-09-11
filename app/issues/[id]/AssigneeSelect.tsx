@@ -26,11 +26,13 @@ const AssigneeSelect = ({issue}: Props) => {
   if (error)
     return null;
 
+  const assignIssue = (userId: String)=> {
+    axios.patch('/api/issues/' + issue.id, {assignedToUserId: userId || null}).catch(()=> {toast.error('Changes not saved')});
+  }
+
   return (
     <>
-    <Select.Root onValueChange={(userId)=> {
-      axios.patch('/api/issues/' + issue.id, {assignedToUserId: userId || null}).catch(()=> {toast.error('Changes not saved')});
-    }}>
+    <Select.Root onValueChange={assignIssue}>
         <Select.Trigger />
         <Select.Content>
             <Select.Group>
