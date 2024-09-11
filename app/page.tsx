@@ -1,7 +1,8 @@
 import Image from 'next/image'
+import Pagination from './components/Pagination'
 
 export default function Home() {
   return (
-    <div className='ml-3'>Pagina de manejo de Issues</div>
+    <Pagination itemCount={40} pageSize={20} currentPage={1}/>
   )
 }
