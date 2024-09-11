@@ -6,6 +6,7 @@ import Pagination from '@/app/components/Pagination'
 import IssueTable, { IssueQuery } from './IssueTable'
 import { columnNames } from './IssueTable'
 import { Flex } from '@radix-ui/themes'
+import { Metadata } from 'next'
 //import delay from 'delay'
 
 const IssuesPage = async ({searchParams}: {searchParams: IssueQuery}) => {
@@ -44,3 +45,8 @@ export const dynamic = 'force-dynamic';
 //export const revalidate = 0
 
 export default IssuesPage
+
+export const metadata: Metadata = {
+  title: 'Issue Tracker - Issue List',
+  description: 'Vista de todas las Issues'
+}
