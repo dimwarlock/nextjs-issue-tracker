@@ -1,6 +1,6 @@
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import createIssueSchema from '../../validationSchema'
+import {createIssueSchema} from '../../validationSchema'
 import { getServerSession } from "next-auth";
 import authOptions from "@/app/auth/authOptions";
 

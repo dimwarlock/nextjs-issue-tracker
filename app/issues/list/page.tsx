@@ -5,9 +5,14 @@ import { IssueStatusBadge } from '../../components/IssueStatusBadge'
 import delay from 'delay'
 import IssueActions from './IssueActions'
 import {Link } from '@/app/components/index'
+import { Status } from '@prisma/client'
 
-const IssuesPage = async () => {
-  const issues = await prisma.issue.findMany();
+const IssuesPage = async ({searchParams}: {searchParams: {status: Status}}) => {
+  const issues = await prisma.issue.findMany({
+    where: {
+      status: searchParams.status
+    }
+  });
  await delay(2000);
 
   return (

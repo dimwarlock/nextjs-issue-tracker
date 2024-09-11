@@ -6,7 +6,7 @@ import {useForm, Controller} from 'react-hook-form';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
-import createIssueSchema from '@/app/validationSchema';
+import {createIssueSchema} from '@/app/validationSchema';
 import {z} from 'zod'
 import {ErrorMsg, Spinner} from '@/app/components/index'
 import { Issue } from '@prisma/client';
@@ -52,7 +52,9 @@ const IssueForm = ({issue}: Props) => {
     <div className='max-w-xl ml-4 space-y-2'>
       {error && <Callout.Root color='red'> <Callout.Text>{error}</Callout.Text> </Callout.Root>}
       <form className='space-y-2' onSubmit={onSubmit}>
-          <TextField.Root size="3" color="iris" variant="soft" placeholder="Titulo" {...register('title')} defaultValue={issue?.title}/>
+          <TextField.Root>
+            <TextField.Input size="3" color="iris" variant="soft" placeholder="Titulo" {...register('title')} defaultValue={issue?.title}/>
+          </TextField.Root> 
           {<ErrorMsg>{errors.title?.message}</ErrorMsg>}
           <Controller 
             name='description'
