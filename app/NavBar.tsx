@@ -66,7 +66,7 @@ const NavLinks = ()=> {
   const links = [
     {
         label: 'Dashboard',
-        href: '/dashboard'
+        href: '/'
     },
     {
         label: 'Issues',
